@@ -11,10 +11,13 @@ public class PlayerController : MonoBehaviour {
 	public float rotationSpeed = 720f;
 
 	public Vector3 velocity = Vector3.zero;
+	private ColorFader cf;
+	private ParticleSystem onFlash;
 
 	// Use this for initialization
 	void Awake () {
 		main = this;
+		cf = gameObject.GetComponent<ColorFader>();
 	}
 	
 	// Update is called once per frame
@@ -76,5 +79,9 @@ public class PlayerController : MonoBehaviour {
 			velocity.z += drag * Time.deltaTime;
 			if (velocity.z > 0) velocity.z = 0;
 		}
+	}
+
+	public void Flash(){
+		renderer.material.color += new Color(.8f, .8f, .8f);
 	}
 }

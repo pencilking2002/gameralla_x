@@ -27,7 +27,7 @@ public class Hotspot : MonoBehaviour {
 		if (dist <= activationDistance){
 			aSource.panLevel = 0;
 			activated = true;
-			renderer.material.color += new Color(.7f, .7f, .7f);
+			player.Flash();
 		}
 
 	}
