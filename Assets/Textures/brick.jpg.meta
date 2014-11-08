@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 5ed241f5a8e9445c4a00b2592326f8a2
 TextureImporter:
   fileIDToRecycleName: {}
+=======
+guid: 56f43a0f2438c4b4f9a779ea67c30279
+TextureImporter:
+>>>>>>> Stashed changes
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,9 +30,15 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
+<<<<<<< Updated upstream
     aniso: -1
     mipBias: -1
     wrapMode: -1
+=======
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+>>>>>>> Stashed changes
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -40,7 +51,15 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
+<<<<<<< Updated upstream
   buildTargetSettings: []
+=======
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+>>>>>>> Stashed changes
   spriteSheet:
     sprites: []
   spritePackingTag: 
