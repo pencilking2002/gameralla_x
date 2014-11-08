@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
 
 
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 		transform.position = Vector3.SmoothDamp(transform.position, target.transform.position + new Vector3(0, 10f, -6), ref velocity, smoothTime);
 	}
 }
