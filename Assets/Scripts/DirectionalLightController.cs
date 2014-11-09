@@ -4,9 +4,14 @@ using System.Collections;
 public class DirectionalLightController : MonoBehaviour {
 	public static DirectionalLightController main;
 
+	void Awake(){
+		main = this;
+	}
 
-	public void SetIntensity(float intensity){
-		light.intensity = intensity;
+	public Light dirLight;
+
+	public void IncreaseIntensity(float intensity){
+		dirLight.intensity += intensity;
 	}
 
 }
