@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour {
 	public bool OnActivateHotspot(Hotspot h){
 		if (hotspotsActivated.Count >= maxHotspots) return false;
 		hotspotsActivated.Add(h);
-		Flash(h.light.color/4f);
+		Flash(h.light.color/3f);
 		return true;
 	}
 
