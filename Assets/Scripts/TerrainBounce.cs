@@ -14,8 +14,8 @@ public class TerrainBounce : MonoBehaviour {
 		//sets a baseposition variable incease along the x axis 
 		basePosition += new Vector3( 0f, 0f, 0f);
 		
-		transform.position = basePosition + new Vector3(0f, Mathf.Sin( Time.time *2f) * 10f, 0f);
-
+		transform.position = basePosition + new Vector3(0f, Mathf.Sin( Time.time ) * 2f, 0f);
+		//	transform.position = basePosition + new Vector3(0f, Mathf.Sin( Time.time *2f) * 10f, 0f);
 	
 	}
 
