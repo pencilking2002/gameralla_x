@@ -55,7 +55,8 @@ public class Hotspot : MonoBehaviour {
 				activated = true;
 				light.intensity = 4f;
 				lf.intensityTarget = 0f;
-				spring.TweenMuchroom();
+				if (spring != null)
+					spring.TweenMuchroom();
 			}
 		}
 	}

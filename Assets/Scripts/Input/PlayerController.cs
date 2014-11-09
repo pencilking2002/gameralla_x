@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
 	private float ylerp;
 	private bool ylerpup;
 
+	public AudioClip onPikcup;
+
 	// Use this for initialization
 	void Awake () {
 		yPlane = transform.position.y;	
@@ -126,15 +128,26 @@ public class PlayerController : MonoBehaviour {
 		renderer.material.color += new Color(.8f, .8f, .8f);
 		cf.fullColor += color;
 		transform.localScale += new Vector3(.5f, .5f, .5f);
+		speed += .1f;
+		acceleration += .3f;
 		DirectionalLightController.main.IncreaseIntensity(.02f);
+		OnPickupSound();
 	}
 
 
 	public bool OnActivateHotspot(Hotspot h){
-		if (hotspotsActivated.Count >= maxHotspots) return false;
+		if (hotspotsActivated.Count >= maxHotspots){
+			CameraFade.StartAlphaFade(Color.white, false, 5f);
+			Invoke("LoadNext", 9f);
+		}
+
 		hotspotsActivated.Add(h);
 		Flash(h.light.color/3f);
 		return true;
+	}
+
+	public void LoadNext(){
+		Application.LoadLevel(3);
 	}
 
 	public void ResetAllHotspots(){
@@ -142,5 +155,18 @@ public class PlayerController : MonoBehaviour {
 			hotspotsActivated[i].Reset();
 		}
 		hotspotsActivated.Clear();
+	}
+
+	private void OnPickupSound(){
+		GameObject g = new GameObject("OneShotAudio");
+		AudioSource a = g.AddComponent<AudioSource>();
+		a.clip = onPikcup;
+		a.Play();
+		a.rolloffMode = AudioRolloffMode.Linear;
+		a.volume = .4f;
+		a.pitch = .5f;
+		a.loop = false;
+		a.dopplerLevel = 0;
+		Destroy(g, onPikcup.length + 1f);
 	}
 }
