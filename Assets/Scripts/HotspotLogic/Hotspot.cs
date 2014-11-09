@@ -25,9 +25,10 @@ public class Hotspot : MonoBehaviour {
 		float dist = Vector3.Distance(transform.position, player.transform.position);
 		aSource.panLevel = Mathf.Lerp(0, 1, dist/maxDist);
 		if (dist <= activationDistance){
-			aSource.panLevel = 0;
-			activated = true;
-			player.Flash();
+			if (player.OnActivateHotspot(this)){
+				aSource.panLevel = 0;
+				activated = true;
+			}
 		}
 
 	}

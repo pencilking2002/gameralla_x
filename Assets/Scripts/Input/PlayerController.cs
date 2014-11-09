@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 	public static PlayerController main;
@@ -14,10 +15,14 @@ public class PlayerController : MonoBehaviour {
 	private ColorFader cf;
 	private ParticleSystem onFlash;
 
+	public int maxHotspots = 5;
+	public List<Hotspot> hotspotsActivated;
+
 	// Use this for initialization
 	void Awake () {
 		main = this;
 		cf = gameObject.GetComponent<ColorFader>();
+		hotspotsActivated = new List<Hotspot>();
 	}
 	
 	// Update is called once per frame
@@ -81,7 +86,16 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+
 	public void Flash(){
 		renderer.material.color += new Color(.8f, .8f, .8f);
+	}
+
+
+	public bool OnActivateHotspot(Hotspot h){
+		if (hotspotsActivated.Count >= maxHotspots) return false;
+		hotspotsActivated.Add(h);
+		Flash();
+		return true;
 	}
 }
