@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 guid: dce55866d1a78439086ce1e0231a9094
 =======
@@ -8,6 +9,9 @@ guid: 0d0770ec897ea42ea8fa6958d25c8d82
 guid: 38971152926dc4829800da1415eb3572
 >>>>>>> FETCH_HEAD
 >>>>>>> FETCH_HEAD
+=======
+guid: e38b4934e621b43bb9257f4dfdc2f247
+>>>>>>> Stashed changes
 AudioImporter:
   serializedVersion: 4
   format: -1
