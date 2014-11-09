@@ -18,8 +18,13 @@ public class PlayerController : MonoBehaviour {
 	public int maxHotspots = 5;
 	public List<Hotspot> hotspotsActivated;
 
+	private float yPlane;
+	private float ylerp;
+	private bool ylerpup;
+
 	// Use this for initialization
 	void Awake () {
+		yPlane = transform.position.y;	
 		main = this;
 		cf = gameObject.GetComponent<ColorFader>();
 		hotspotsActivated = new List<Hotspot>();
@@ -27,6 +32,25 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		if (ylerpup){
+			ylerp -= Time.deltaTime;
+			if (ylerp < 0){
+				ylerpup = !ylerpup;
+			}
+		}
+		else{
+			ylerp += Time.deltaTime;
+			if (ylerp > 1){
+				ylerpup = !ylerpup;
+			}
+		}
+
+
+		Vector3 pos = transform.position;
+		pos.y = yPlane + Mathf.SmoothStep(-.05f, .05f, ylerp);
+		transform.position = pos;
+
 		float xAxisInput = Input.GetAxisRaw("Horizontal");
 		float yAxisInput = Input.GetAxisRaw("Vertical");
 
