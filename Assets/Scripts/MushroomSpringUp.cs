@@ -3,22 +3,24 @@ using System.Collections;
 
 public class MushroomSpringUp : MonoBehaviour {
 
-	public float finalScaleX = 1.2f;
-	public float finalScaleY = 1.2f;
-	public float finalScaleZ = 1.2f;
+	public Vector3 finalScale;
 	public float finalPosY = -2.549794f;
-	public float duration = 2.0f;
+	public float duration = 1.0f;
 	public GameObject child;
+
+	public void Start(){
+		finalScale = transform.localScale;
+		transform.localScale = Vector3.zero;
+	}
 		
 	public void TweenMuchroom()
 	{
 		{
 			//print(collider.gameObject.tag);
-			LeanTween.scaleX(child, finalScaleX, duration).setEase(LeanTweenType.easeInCubic);
-			LeanTween.scaleY(child, finalScaleY, duration).setEase(LeanTweenType.easeInCubic);
-			LeanTween.scaleZ(child, finalScaleZ, duration).setEase(LeanTweenType.easeInCubic);
-			LeanTween.moveLocalY(child, finalPosY, duration).setEase(LeanTweenType.easeInCubic);
-			
+			LeanTween.scaleX(gameObject, finalScale.x, duration).setEase(LeanTweenType.easeInOutCubic);
+			LeanTween.scaleY(gameObject, finalScale.y, duration).setEase(LeanTweenType.easeInOutCubic);
+			LeanTween.scaleZ(gameObject, finalScale.z, duration).setEase(LeanTweenType.easeInOutCubic);
+
 		}
 	}
 	//8.866213

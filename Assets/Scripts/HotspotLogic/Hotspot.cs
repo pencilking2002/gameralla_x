@@ -18,6 +18,8 @@ public class Hotspot : MonoBehaviour {
 
 	private LightFader lf;
 
+	public MushroomSpringUp spring;
+
 	void Start(){
 		player = PlayerController.main;
 		aSource = gameObject.GetComponent<AudioSource>();
@@ -53,6 +55,7 @@ public class Hotspot : MonoBehaviour {
 				activated = true;
 				light.intensity = 4f;
 				lf.intensityTarget = 0f;
+				spring.TweenMuchroom();
 			}
 		}
 	}

@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	private ColorFader cf;
 	private ParticleSystem onFlash;
 
-	public int maxHotspots = 5;
+	public int maxHotspots = 9;
 	public List<Hotspot> hotspotsActivated;
 
 	private float yPlane;
