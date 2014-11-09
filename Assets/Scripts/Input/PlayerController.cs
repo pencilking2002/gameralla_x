@@ -51,19 +51,29 @@ public class PlayerController : MonoBehaviour {
 			movement.z -= acceleration * Time.deltaTime;
 		}
 
-		Debug.Log(movement);
 		velocity += movement;
 
 		velocity = Vector3.ClampMagnitude(velocity, speed);
 
 		if (xAxisInput == 0 && yAxisInput == 0 && dragEnabled)
 			Drag();
-		rigidbody.MovePosition(rigidbody.position + velocity * Time.deltaTime);
+
+		float speedScale = 1f;
+		if (Input.GetKey(KeyCode.LeftShift)){
+			speedScale = 2f;
+		}
+
+		rigidbody.MovePosition(rigidbody.position + velocity * Time.deltaTime * speedScale);
+
 
 
 		if (velocity.magnitude > .3f){
 			Quaternion lookRotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(velocity), rotationSpeed * Time.deltaTime);
 			rigidbody.MoveRotation(lookRotation);
+		}
+
+		if (Input.GetKeyDown(KeyCode.R)){
+			ResetAllHotspots();
 		}
 	}
 
@@ -87,15 +97,24 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-	public void Flash(){
+	public void Flash(Color color){
 		renderer.material.color += new Color(.8f, .8f, .8f);
+		cf.fullColor += color;
+		transform.localScale += new Vector3(.5f, .5f, .5f);
 	}
 
 
 	public bool OnActivateHotspot(Hotspot h){
 		if (hotspotsActivated.Count >= maxHotspots) return false;
 		hotspotsActivated.Add(h);
-		Flash();
+		Flash(h.light.color/4f);
 		return true;
+	}
+
+	public void ResetAllHotspots(){
+		for(int i = 0; i < hotspotsActivated.Count; i++){
+			hotspotsActivated[i].Reset();
+		}
+		hotspotsActivated.Clear();
 	}
 }
