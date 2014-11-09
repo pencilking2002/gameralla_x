@@ -10,6 +10,9 @@ public class FlickerHalo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		light.intensity = Mathf.Lerp(.5f, .55f, Random.value);
+		light.intensity = Mathf.Lerp(.17f, .19f, Random.value);
+		if (Input.anyKeyDown){
+			Debug.Log("DONE");
+		}
 	}
 }
