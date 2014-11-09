@@ -11,7 +11,7 @@ public class GrassSpringUp : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider collider)
 	{
-		if (!sprung)
+		if (!sprung && collider.gameObject.tag == "Player")
 		{
 			//print(collider.gameObject.tag);
 			LeanTween.scaleX(child, finalScale, duration).setEase(LeanTweenType.easeOutElastic);
