@@ -129,8 +129,8 @@ public class PlayerController : MonoBehaviour {
 		renderer.material.color += new Color(.8f, .8f, .8f);
 		cf.fullColor += color;
 		transform.localScale += new Vector3(.5f, .5f, .5f);
-		speed += .1f;
-		acceleration += .3f;
+		speed += .15f;
+		acceleration += .45f;
 		DirectionalLightController.main.IncreaseIntensity(.02f);
 		OnPickupSound();
 	}
