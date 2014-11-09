@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
 		main = this;
 		cf = gameObject.GetComponent<ColorFader>();
 		hotspotsActivated = new List<Hotspot>();
+		CameraFade.StartAlphaFade(Color.black, true, 2f);
 	}
 	
 	// Update is called once per frame
