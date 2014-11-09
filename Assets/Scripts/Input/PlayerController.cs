@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour {
 			rigidbody.MoveRotation(lookRotation);
 		}
 
+
 		if (Input.GetKeyDown(KeyCode.R)){
 			ResetAllHotspots();
 		}
@@ -136,9 +137,10 @@ public class PlayerController : MonoBehaviour {
 
 
 	public bool OnActivateHotspot(Hotspot h){
-		if (hotspotsActivated.Count >= maxHotspots){
-			CameraFade.StartAlphaFade(Color.white, false, 5f);
+		if (hotspotsActivated.Count >= 1){
+			CameraFade.StartAlphaFade( Color.white, false, 5f, 5f, () => { Application.LoadLevel(2); } );
 			Invoke("LoadNext", 9f);
+			return false;
 		}
 
 		hotspotsActivated.Add(h);
@@ -147,7 +149,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void LoadNext(){
-		Application.LoadLevel(3);
+		Application.LoadLevel(2);
 	}
 
 	public void ResetAllHotspots(){
