@@ -136,10 +136,18 @@ public class PlayerController : MonoBehaviour {
 
 
 	public bool OnActivateHotspot(Hotspot h){
-		if (hotspotsActivated.Count >= maxHotspots) return false;
+		if (hotspotsActivated.Count >= maxHotspots){
+			CameraFade.StartAlphaFade(Color.white, false, 5f);
+			Invoke("LoadNext", 9f);
+		}
+
 		hotspotsActivated.Add(h);
 		Flash(h.light.color/3f);
 		return true;
+	}
+
+	public void LoadNext(){
+		Application.LoadLevel(3);
 	}
 
 	public void ResetAllHotspots(){
