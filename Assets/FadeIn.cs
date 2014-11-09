@@ -12,8 +12,10 @@ public class FadeIn : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.F))
 		{
-			// Fade GO in from 0 to 1, but it doesn't work?
-			LeanTween.alpha(gameObject, 0f, 1f);
+			// tween the GO up
+			LeanTween.move (gameObject, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), 2f).setEase(LeanTweenType.easeOutElastic);
+			LeanTween.scaleX(gameObject, 1.2f, 2.0f).setEase(LeanTweenType.easeOutElastic);
+			LeanTween.scaleZ(gameObject, 1.2f, 2.0f).setEase(LeanTweenType.easeOutElastic);
 		}
 	}
 	
