@@ -3,15 +3,20 @@ using System.Collections;
 
 public class StartScreen : MonoBehaviour {
 
+	public GameObject cameraTarget;
+	private float timer = 4f;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
+
 	// Update is called once per frame
 	void Update () {
+		if (timer > 0){
+			timer -= Time.deltaTime;
+			return;
+		}
 		if (Input.anyKeyDown){
-			Invoke("LoadGame", 0f);
+			cameraTarget.transform.position = new Vector3(0, -9f, 0f);
+			Invoke("LoadGame", 2f);
+			CameraFade.StartAlphaFade( Color.black, false, 2f, 2f);
 		}
 	}
 
