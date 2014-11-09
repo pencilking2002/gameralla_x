@@ -46,12 +46,13 @@ public class Hotspot : MonoBehaviour {
 
 		float dist = Vector3.Distance(transform.position, player.transform.position);
 		aSource.panLevel = Mathf.Lerp(0, 1f, dist/maxDist);
-		lf.intensityTarget = Mathf.Lerp (.8f, .1f, dist/maxDist) * Mathf.Lerp(.8f, 1f, lightPulsatingTimer/1f);
+		lf.intensityTarget = Mathf.Lerp (.4f, .05f, dist/maxDist) * Mathf.Lerp(.8f, 1f, lightPulsatingTimer/1f);
 		if (dist <= activationDistance){
 			if (player.OnActivateHotspot(this)){
 				aSource.panLevel = 0;
 				activated = true;
-				light.intensity = 3f;
+				light.intensity = 4f;
+				lf.intensityTarget = 0f;
 			}
 		}
 	}
