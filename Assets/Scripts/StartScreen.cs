@@ -10,6 +10,12 @@ public class StartScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.anyKeyDown){
+			Invoke("LoadGame", 0f);
+		}
+	}
+
+	void LoadGame(){
+		Application.LoadLevel(1);
 	}
 }

@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour {
 
 
 
-		if (velocity.magnitude > .3f){
+		if (velocity.magnitude > .4f){
 			Quaternion lookRotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(velocity), rotationSpeed * Time.deltaTime);
 			rigidbody.MoveRotation(lookRotation);
 		}
