@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
 		main = this;
 		cf = gameObject.GetComponent<ColorFader>();
 		hotspotsActivated = new List<Hotspot>();
+		CameraFade.StartAlphaFade(Color.black, true, 2f);
 	}
 	
 	// Update is called once per frame
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour {
 
 		float speedScale = 1f;
 		if (Input.GetKey(KeyCode.LeftShift)){
-			speedScale = 2f;
+			speedScale = 6f;
 		}
 
 		rigidbody.MovePosition(rigidbody.position + velocity * Time.deltaTime * speedScale);
