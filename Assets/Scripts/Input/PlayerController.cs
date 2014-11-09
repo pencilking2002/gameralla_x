@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
 	private float ylerp;
 	private bool ylerpup;
 
+	public AudioClip onPikcup;
+
 	// Use this for initialization
 	void Awake () {
 		yPlane = transform.position.y;	
@@ -129,6 +131,7 @@ public class PlayerController : MonoBehaviour {
 		speed += .1f;
 		acceleration += .3f;
 		DirectionalLightController.main.IncreaseIntensity(.02f);
+		OnPickupSound();
 	}
 
 
@@ -144,5 +147,18 @@ public class PlayerController : MonoBehaviour {
 			hotspotsActivated[i].Reset();
 		}
 		hotspotsActivated.Clear();
+	}
+
+	private void OnPickupSound(){
+		GameObject g = new GameObject("OneShotAudio");
+		AudioSource a = g.AddComponent<AudioSource>();
+		a.clip = onPikcup;
+		a.Play();
+		a.rolloffMode = AudioRolloffMode.Linear;
+		a.volume = .4f;
+		a.pitch = .5f;
+		a.loop = false;
+		a.dopplerLevel = 0;
+		Destroy(g, onPikcup.length + 1f);
 	}
 }
