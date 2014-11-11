@@ -86,9 +86,9 @@ public class PlayerController : MonoBehaviour {
 			Drag();
 
 		float speedScale = 1f;
-		if (Input.GetKey(KeyCode.LeftShift)){
-			speedScale = 6f;
-		}
+//		if (Input.GetKey(KeyCode.LeftShift)){
+//			speedScale = 6f;
+//		}
 
 		rigidbody.MovePosition(rigidbody.position + velocity * Time.deltaTime * speedScale);
 
