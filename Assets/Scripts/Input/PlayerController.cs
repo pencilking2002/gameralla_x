@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		Application.targetFrameRate = 30;
 		yPlane = transform.position.y;	
 		main = this;
 		cf = gameObject.GetComponent<ColorFader>();
